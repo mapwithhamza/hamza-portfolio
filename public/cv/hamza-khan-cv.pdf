@@ -1,0 +1,169 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> /Contents 7 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+7 0 obj
+<< /Length 7642 >>
+stream
+0.140 0.140 0.220 rg
+BT /F2 17.00 Tf 194.00 744.00 Td (MUHAMMAD HAMZA KHAN) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.80 Tf 156.12 731.00 Td (Software Developer | WebGIS Developer | GIS Analyst | AI-Assisted Systems) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.20 Tf 209.38 720.00 Td (Islamabad, Pakistan | hamzakhan.gis.dev@gmail.com) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.20 Tf 196.00 710.00 Td (linkedin.com/in/mhamzakhan007 | github.com/mapwithhamza) Tj ET
+0.120 0.360 0.620 rg
+BT /F2 10.20 Tf 54.00 676.00 Td (Summary) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 54.00 665.00 Td (Software developer and Geoinformatics Engineering student at NUST IGIS, working across full-stack web apps, GIS dashboards,) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 54.00 655.60 Td (remote sensing workflows, and AI-assisted systems. Completed an AI internship at SPS Technologies. Built 10+ projects including) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 54.00 646.20 Td (logistics routing, disaster intelligence, flood monitoring, solar analysis, healthcare access, and live mapping dashboards. Comfortable) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 54.00 636.80 Td (moving from spatial data and APIs to clear client-facing interfaces.) Tj ET
+0.120 0.360 0.620 rg
+BT /F2 10.20 Tf 54.00 604.40 Td (Experience) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 593.40 Td (AI Intern) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.70 Tf 98.50 593.40 Td (|  SPS Technologies  2025) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 583.40 Td (Completed an AI internship focused on applying intelligent systems with a geoinformatics background, exploring practical links) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 574.00 Td (between AI, GIS, automation, and software workflows.) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 564.60 Td (Worked with Python, automation concepts, and spatial-data thinking to understand how AI-assisted systems can support analysis,) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 555.20 Td (decision-making, and user-facing tools.) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 531.80 Td (Project-Based Software & GIS Developer) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.70 Tf 236.25 531.80 Td (|  Portfolio Builds  2024 - Present) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 521.80 Td (Built 10+ apps, dashboards, GIS tools, and AI-assisted systems across logistics routing, flood monitoring, disaster intelligence, solar) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 512.40 Td (analysis, healthcare access, and market mapping.) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 503.00 Td (Designed full-stack and map-first interfaces using React/Next.js, Python/FastAPI, PostGIS, Mapbox/MapLibre, QGIS, GDAL, REST) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 493.60 Td (APIs, TensorFlow, and OpenCV.) Tj ET
+0.120 0.360 0.620 rg
+BT /F2 10.20 Tf 54.00 462.20 Td (Selected Projects) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 451.20 Td (RouteIQ) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.30 Tf 96.00 451.20 Td (React | TypeScript | FastAPI | PostgreSQL | MapLibre | Python DSA  2026) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 441.70 Td (Built a logistics dashboard with rider/delivery management, route simulation, and seven graph/sorting algorithms implemented from) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 432.30 Td (scratch, including Dijkstra, A*, TSP DP, BFS, DFS, Greedy, and Merge Sort.) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 414.90 Td (HazardMind AI) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.30 Tf 123.50 414.90 Td (Claude API | FastAPI | PostGIS | Sentinel-1/2  2026) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 405.40 Td (Contributed hazard agent logic, satellite-informed risk interpretation, and geospatial reasoning to a multi-agent disaster response) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 396.00 Td (pipeline built with Team GridForce.) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 379.60 Td (Indus Pulse Warning System) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.30 Tf 184.50 379.60 Td (Mapbox GL JS | Node.js | WMS | REST APIs  2026) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 370.10 Td (Built a flood monitoring dashboard for the Indus River basin with live map layers, alert views, operational context, and interactive) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 360.70 Td (WebGL visualization.) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 344.30 Td (SolarVision AI) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.30 Tf 122.00 344.30 Td (TensorFlow | Rasterio | Python | QGIS  2025) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 334.80 Td (Created a satellite-based solar analysis interface with location search, configurable assumptions, and site-potential visualization for) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 325.40 Td (clearer evaluation decisions.) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 309.00 Td (CareGrid India) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.30 Tf 123.00 309.00 Td (FastAPI | React | RAG | PostGIS | Mapbox  2026) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 299.50 Td (Supported geospatial data modeling, RAG workflow, testing, and map-backed healthcare facility intelligence; team placed 6th) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 290.10 Td (globally in a 21-hour hackathon build.) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 273.70 Td (Remote Sensing & Cartography Lab) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.30 Tf 215.00 273.70 Td (QGIS | GDAL | ERDAS Imagine | Spectral Indices  2024 - Present) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 264.20 Td (Prepared satellite imagery, spectral indices, classification outputs, flood extent maps, vector datasets, and publication-ready map) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 62.00 254.80 Td (layouts.) Tj ET
+0.120 0.360 0.620 rg
+BT /F2 10.20 Tf 54.00 223.40 Td (Skills) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 8.50 Tf 54.00 212.40 Td (Frontend:) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 130.00 212.40 Td (React, Next.js, TypeScript, JavaScript ES6+, HTML5, CSS3, Tailwind CSS) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 8.50 Tf 54.00 203.00 Td (Backend:) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 130.00 203.00 Td (Python, FastAPI, Node.js, Express.js, REST APIs, PostgreSQL, PostGIS) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 8.50 Tf 54.00 193.60 Td (GIS & Mapping:) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 130.00 193.60 Td (Mapbox GL JS, MapLibre, Leaflet, Deck.gl, QGIS, ArcGIS Pro, GeoServer, WMS/WFS) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 8.50 Tf 54.00 184.20 Td (Remote Sensing:) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 130.00 184.20 Td (GDAL, Rasterio, ERDAS Imagine, GeoPandas, Shapely, SAR context, spectral indices) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 8.50 Tf 54.00 174.80 Td (AI & Data:) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 130.00 174.80 Td (TensorFlow, OpenCV, Agentic AI, RAG pipelines, LLM integration, spatial data pipelines) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 8.50 Tf 54.00 165.40 Td (Cloud & Tools:) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 130.00 165.40 Td (Git/GitHub, Docker, CI/CD, Vercel, Netlify, Firebase, MongoDB, AWS basics) Tj ET
+0.120 0.360 0.620 rg
+BT /F2 10.20 Tf 54.00 134.00 Td (Education) Tj ET
+0.140 0.140 0.220 rg
+BT /F2 9.00 Tf 54.00 123.00 Td (BE Geoinformatics Engineering) Tj ET
+0.320 0.320 0.460 rg
+BT /F3 8.50 Tf 199.00 123.00 Td (NUST IGIS, Islamabad) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 54.00 113.60 Td (Relevant Coursework: GIS, Remote Sensing, Spatial Databases, Python, Geodetic Engineering, Statistical Analysis) Tj ET
+0.320 0.320 0.460 rg
+BT /F1 8.50 Tf 54.00 104.20 Td (Hackathons: 3 team-based builds, including CareGrid India and HazardMind AI.) Tj ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000267 00000 n 
+0000000337 00000 n 
+0000000412 00000 n 
+0000000490 00000 n 
+trailer << /Size 8 /Root 1 0 R >>
+startxref
+8184
+%%EOF

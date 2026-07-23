@@ -24,6 +24,16 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.codex-*.log
+.codex-*-frames/
+.codex-*.jpg
+.codex-reference-storyboards/
+
+# local review/reference media
+references/
+references/Videos/
+resume-work/
+resume-work/render-*/
 
 # local env files
 .env*.local

@@ -1,0 +1,8 @@
+.codex-*/
+.codex-*.log
+.codex-*.jpg
+references/
+resume-work/
+*.mp4
+*.mov
+*.avi
