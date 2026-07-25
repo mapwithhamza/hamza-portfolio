@@ -20,7 +20,7 @@ const geistBody = localFont({
   weight: "100 900",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mhamzakhan.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mhamzakhan.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
