@@ -112,6 +112,7 @@ export default function CartographySection() {
 
 		const onResize = () => {
 			cachedMaxScroll = Math.max(1, atlas.scrollWidth - atlas.clientWidth);
+			updateProgress();
 		};
 
 		const updateProgress = () => {
@@ -152,7 +153,7 @@ export default function CartographySection() {
 
 			if (inView && !paused && maxScroll > 2) {
 				const deltaSeconds = Math.min(0.05, (time - lastTime) / 1000 || 0);
-				atlas.scrollLeft += direction * 10 * deltaSeconds;
+				atlas.scrollLeft += direction * 18 * deltaSeconds;
 
 				if (atlas.scrollLeft >= maxScroll - 2) {
 					direction = -1;

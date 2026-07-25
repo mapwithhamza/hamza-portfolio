@@ -248,6 +248,7 @@ export const projects: ProjectData[] = [
     miniMap: "Scattered health facility pattern",
     team: "Built with Team GridForce. Placed 6th globally.",
     caseStudy: {
+      heroImage: "/images/projects/caregrid/hero.png",
       summary:
         "A healthcare-access intelligence system over verified facility data, built under hackathon constraints with agentic retrieval and geospatial querying.",
       role: "Geospatial data modeling, RAG workflow support, testing, and map-backed facility intelligence.",
