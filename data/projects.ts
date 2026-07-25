@@ -246,6 +246,9 @@ export const projects: ProjectData[] = [
       "Agentic RAG intelligence over 10,000+ verified healthcare facility records across 34 Indian states. Shipped in 21 hours and placed 6th globally.",
     tech: ["FASTAPI", "REACT", "RAG PIPELINE", "POSTGIS", "MAPBOX"],
     miniMap: "Scattered health facility pattern",
+    links: {
+      live: "https://caregrid-frontend.vercel.app",
+    },
     team: "Built with Team GridForce. Placed 6th globally.",
     caseStudy: {
       heroImage: "/images/projects/caregrid/hero.png",
@@ -260,13 +263,15 @@ export const projects: ProjectData[] = [
   },
 ];
 
-const featuredProjectSlugs = new Set([
+const featuredProjectSlugs = [
   "hazardmind",
+  "caregrid",
   "routeiq",
   "ipws",
   "micro-flood-predictor",
   "solarvision-ai",
-  "caregrid",
-]);
+] as const;
 
-export const featuredProjects = projects.filter((project) => featuredProjectSlugs.has(project.slug));
+export const featuredProjects = featuredProjectSlugs
+  .map((slug) => projects.find((project) => project.slug === slug))
+  .filter((project): project is ProjectData => Boolean(project));
