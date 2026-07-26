@@ -59,8 +59,6 @@ const MAPS = [
 
 export default function CartographySection() {
 	const sectionRef = useRef<HTMLElement>(null);
-	const atlasRef = useRef<HTMLDivElement>(null);
-	const progressRef = useRef<HTMLSpanElement>(null);
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
@@ -87,201 +85,6 @@ export default function CartographySection() {
 
 		observer.observe(sectionRef.current);
 		return () => observer.disconnect();
-	}, []);
-
-	useEffect(() => {
-		const atlas = atlasRef.current;
-		const progress = progressRef.current;
-
-		if (!atlas || !progress) {
-			return;
-		}
-
-		const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		let frame: number | null = null;
-		let resumeTimer: number | null = null;
-		let lastTime = 0;
-		let direction = 1;
-		let inView = false;
-		let paused = reduceMotion;
-		let dragging = false;
-		let dragStartX = 0;
-		let dragStartScroll = 0;
-		let cachedMaxScroll = Math.max(1, atlas.scrollWidth - atlas.clientWidth);
-
-		const onResize = () => {
-			cachedMaxScroll = Math.max(1, atlas.scrollWidth - atlas.clientWidth);
-			updateProgress();
-		};
-
-		const updateProgress = () => {
-			const maxScroll = cachedMaxScroll;
-			const amount = Math.min(1, Math.max(0, atlas.scrollLeft / maxScroll));
-			progress.style.transform = `scaleX(${amount})`;
-		};
-
-		const pauseAuto = () => {
-			paused = true;
-			atlas.classList.remove("cartography-atlas--auto");
-
-			if (resumeTimer !== null) {
-				window.clearTimeout(resumeTimer);
-				resumeTimer = null;
-			}
-		};
-
-		const resumeAutoSoon = () => {
-			if (reduceMotion || dragging || !inView) {
-				return;
-			}
-
-			pauseAuto();
-			resumeTimer = window.setTimeout(() => {
-				if (dragging || !inView) {
-					return;
-				}
-
-				paused = false;
-				lastTime = performance.now();
-				atlas.classList.add("cartography-atlas--auto");
-			}, 450);
-		};
-
-		const tick = (time: number) => {
-			const maxScroll = cachedMaxScroll;
-
-			if (inView && !paused && maxScroll > 2) {
-				const deltaSeconds = Math.min(0.05, (time - lastTime) / 1000 || 0);
-				atlas.scrollLeft += direction * 24 * deltaSeconds;
-
-				if (atlas.scrollLeft >= maxScroll - 2) {
-					direction = -1;
-				} else if (atlas.scrollLeft <= 2) {
-					direction = 1;
-				}
-
-				updateProgress();
-			}
-
-			lastTime = time;
-			frame = window.requestAnimationFrame(tick);
-		};
-
-		const onWheel = (event: WheelEvent) => {
-			const maxScroll = cachedMaxScroll;
-
-			if (maxScroll <= 2) {
-				return;
-			}
-
-			const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-
-			if (delta === 0) {
-				return;
-			}
-
-			const atStart = atlas.scrollLeft <= 1;
-			const atEnd = atlas.scrollLeft >= maxScroll - 1;
-
-			if ((delta < 0 && atStart) || (delta > 0 && atEnd)) {
-				return;
-			}
-
-			const before = atlas.scrollLeft;
-			atlas.scrollLeft += delta;
-			const consumed = atlas.scrollLeft !== before;
-
-			if (consumed) {
-				event.preventDefault();
-				direction = delta >= 0 ? 1 : -1;
-				updateProgress();
-				resumeAutoSoon();
-			}
-		};
-
-		const onPointerDown = (event: PointerEvent) => {
-			if (event.pointerType === "mouse" && event.button !== 0) {
-				return;
-			}
-
-			dragging = true;
-			dragStartX = event.clientX;
-			dragStartScroll = atlas.scrollLeft;
-			atlas.classList.add("cartography-atlas--dragging");
-			atlas.setPointerCapture(event.pointerId);
-			pauseAuto();
-		};
-
-		const onPointerMove = (event: PointerEvent) => {
-			if (!dragging) {
-				return;
-			}
-
-			const delta = event.clientX - dragStartX;
-			atlas.scrollLeft = dragStartScroll - delta;
-			direction = delta <= 0 ? 1 : -1;
-			updateProgress();
-		};
-
-		const endDrag = (event: PointerEvent) => {
-			if (!dragging) {
-				return;
-			}
-
-			dragging = false;
-			atlas.classList.remove("cartography-atlas--dragging");
-
-			if (atlas.hasPointerCapture(event.pointerId)) {
-				atlas.releasePointerCapture(event.pointerId);
-			}
-
-			resumeAutoSoon();
-		};
-
-		const visibilityObserver = new IntersectionObserver(
-			([entry]) => {
-				inView = entry.isIntersecting;
-				lastTime = performance.now();
-				updateProgress();
-
-				if (entry.isIntersecting) {
-					resumeAutoSoon();
-				} else {
-					pauseAuto();
-				}
-			},
-			{ threshold: 0.28 },
-		);
-
-		updateProgress();
-		window.addEventListener("resize", onResize, { passive: true });
-		visibilityObserver.observe(atlas);
-		atlas.addEventListener("scroll", updateProgress, { passive: true });
-		atlas.addEventListener("wheel", onWheel, { passive: false });
-		atlas.addEventListener("pointerdown", onPointerDown);
-		atlas.addEventListener("pointermove", onPointerMove);
-		atlas.addEventListener("pointerup", endDrag);
-		atlas.addEventListener("pointercancel", endDrag);
-		frame = window.requestAnimationFrame(tick);
-
-		return () => {
-			visibilityObserver.disconnect();
-			window.removeEventListener("resize", onResize);
-			atlas.removeEventListener("scroll", updateProgress);
-			atlas.removeEventListener("wheel", onWheel);
-			atlas.removeEventListener("pointerdown", onPointerDown);
-			atlas.removeEventListener("pointermove", onPointerMove);
-			atlas.removeEventListener("pointerup", endDrag);
-			atlas.removeEventListener("pointercancel", endDrag);
-
-			if (frame !== null) {
-				window.cancelAnimationFrame(frame);
-			}
-
-			if (resumeTimer !== null) {
-				window.clearTimeout(resumeTimer);
-			}
-		};
 	}, []);
 
 	return (
@@ -334,35 +137,37 @@ export default function CartographySection() {
 			</div>
 
 			<div className="cartography-rail" aria-label="Selected geospatial and remote sensing outputs">
-				<div ref={atlasRef} className="cartography-atlas">
-					{MAPS.map((map, index) => (
-						<article className="cartography-card" key={map.title}>
-							<div className="cartography-card__index">{String(index + 1).padStart(2, "0")}</div>
-							<div className="cartography-card__image">
-								<Image
-									src={map.src}
-									alt={map.alt}
-									fill
-									sizes="(max-width: 900px) 78vw, 360px"
-								/>
-							</div>
-							<div className="cartography-card__meta">
-								<span>{map.kicker}</span>
-								<strong>{map.title}</strong>
-								<div className="cartography-card__tags">
-									{map.tags.map((tag) => (
-										<em key={tag}>{tag}</em>
-									))}
+				<div className="cartography-atlas">
+					<div className="cartography-atlas__track">
+						{[...MAPS, ...MAPS].map((map, index) => (
+							<article className="cartography-card" key={`${map.title}-${index}`}>
+								<div className="cartography-card__index">{String((index % MAPS.length) + 1).padStart(2, "0")}</div>
+								<div className="cartography-card__image">
+									<Image
+										src={map.src}
+										alt={map.alt}
+										fill
+										sizes="(max-width: 900px) 78vw, 360px"
+									/>
 								</div>
-							</div>
-						</article>
-					))}
+								<div className="cartography-card__meta">
+									<span>{map.kicker}</span>
+									<strong>{map.title}</strong>
+									<div className="cartography-card__tags">
+										{map.tags.map((tag) => (
+											<em key={tag}>{tag}</em>
+										))}
+									</div>
+								</div>
+							</article>
+						))}
+					</div>
 				</div>
 
 				<div className="cartography-rail__footer" aria-hidden="true">
-					<span>06 outputs - drag / horizontal wheel to explore</span>
+					<span>06 outputs - slow auto scan</span>
 					<div className="cartography-rail__track">
-						<span ref={progressRef} />
+						<span />
 					</div>
 				</div>
 			</div>

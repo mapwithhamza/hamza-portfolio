@@ -268,8 +268,11 @@ const featuredProjectSlugs = [
   "caregrid",
   "routeiq",
   "ipws",
-  "micro-flood-predictor",
   "solarvision-ai",
+  "islamabad-market-analysis",
+  "micro-flood-predictor",
+  "kamchatka-earthquake",
+  "weather-gis-dashboard",
 ] as const;
 
 export const featuredProjects = featuredProjectSlugs

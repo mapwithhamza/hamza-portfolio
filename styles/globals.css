@@ -1547,17 +1547,8 @@
 .cartography-atlas {
   width: 100%;
   margin: 0;
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 0;
-  scroll-behavior: smooth;
+  overflow: hidden;
   padding: 2px 0 16px;
-  scrollbar-width: none;
-  cursor: grab;
-  user-select: none;
   opacity: 0;
   transform: translateY(26px);
   transition:
@@ -1565,20 +1556,12 @@
     transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.cartography-atlas::-webkit-scrollbar {
-  display: none;
-}
-
-.cartography-atlas--dragging {
-  cursor: grabbing;
-  scroll-snap-type: none;
-  scroll-behavior: auto;
-}
-
-.cartography-atlas--auto,
-.cartography-atlas--nudging {
-  scroll-snap-type: none;
-  scroll-behavior: auto;
+.cartography-atlas__track {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  will-change: transform;
+  animation: cartography-marquee 46s linear infinite;
 }
 
 .cartography-section--visible .cartography-atlas {
@@ -1629,9 +1612,10 @@
   display: block;
   border-radius: inherit;
   background: linear-gradient(90deg, rgba(197, 160, 89, 0.92), rgba(129, 210, 194, 0.8));
-  transform: scaleX(0);
+  transform: scaleX(0.08);
   transform-origin: left center;
   will-change: transform;
+  animation: cartography-progress 46s linear infinite;
 }
 
 .cartography-card {
@@ -1639,7 +1623,6 @@
   flex: 0 0 clamp(310px, 31vw, 390px);
   min-width: 0;
   overflow: hidden;
-  scroll-snap-align: start;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   background:
@@ -1764,6 +1747,30 @@
   }
 }
 
+@keyframes cartography-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 8px), 0, 0);
+  }
+}
+
+@keyframes cartography-progress {
+  0% {
+    transform: scaleX(0.08);
+  }
+
+  50% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0.08);
+  }
+}
+
 @media (max-width: 900px) {
   .cartography-section {
     min-height: 0;
@@ -1785,34 +1792,25 @@
     padding-left: 14px;
   }
 
-  .cartography-atlas {
-    display: flex;
-    width: 100%;
-  }
-
   .cartography-rail {
     width: 100%;
     margin-inline: 0;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .cartography-atlas {
-    gap: 14px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 0;
+    width: 100%;
+    overflow: hidden;
     padding: 0 0 12px;
-    scrollbar-width: none;
   }
 
-  .cartography-atlas::-webkit-scrollbar {
-    display: none;
+  .cartography-atlas__track {
+    gap: 14px;
+    animation-duration: 38s;
   }
 
   .cartography-card {
     flex: 0 0 min(78vw, 360px);
-    scroll-snap-align: center;
   }
 
   .cartography-rail__footer {
@@ -1831,7 +1829,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cartography-map,
-  .cartography-routes path {
+  .cartography-routes path,
+  .cartography-atlas__track,
+  .cartography-rail__track span {
     animation: none;
   }
 
