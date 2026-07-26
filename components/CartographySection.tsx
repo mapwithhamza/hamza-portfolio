@@ -59,6 +59,7 @@ const MAPS = [
 
 export default function CartographySection() {
 	const sectionRef = useRef<HTMLElement>(null);
+	const atlasRef = useRef<HTMLDivElement>(null);
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
@@ -85,6 +86,89 @@ export default function CartographySection() {
 
 		observer.observe(sectionRef.current);
 		return () => observer.disconnect();
+	}, []);
+
+	useEffect(() => {
+		const atlas = atlasRef.current;
+
+		if (!atlas) {
+			return;
+		}
+
+		let resumeTimer: number | null = null;
+		let dragging = false;
+		let dragStartX = 0;
+		let dragStartScroll = 0;
+
+		const pauseManual = () => {
+			atlas.classList.add("cartography-atlas--manual");
+
+			if (resumeTimer !== null) {
+				window.clearTimeout(resumeTimer);
+			}
+
+			resumeTimer = window.setTimeout(() => {
+				if (!dragging) {
+					atlas.classList.remove("cartography-atlas--manual");
+				}
+			}, 4000);
+		};
+
+		const onPointerDown = (event: PointerEvent) => {
+			if (event.pointerType === "mouse" && event.button !== 0) {
+				return;
+			}
+
+			dragging = true;
+			dragStartX = event.clientX;
+			dragStartScroll = atlas.scrollLeft;
+			atlas.classList.add("cartography-atlas--dragging");
+			pauseManual();
+			atlas.setPointerCapture(event.pointerId);
+		};
+
+		const onPointerMove = (event: PointerEvent) => {
+			if (!dragging) {
+				return;
+			}
+
+			atlas.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+		};
+
+		const endDrag = (event: PointerEvent) => {
+			if (!dragging) {
+				return;
+			}
+
+			dragging = false;
+			atlas.classList.remove("cartography-atlas--dragging");
+
+			if (atlas.hasPointerCapture(event.pointerId)) {
+				atlas.releasePointerCapture(event.pointerId);
+			}
+
+			pauseManual();
+		};
+
+		atlas.addEventListener("wheel", pauseManual, { passive: true });
+		atlas.addEventListener("touchstart", pauseManual, { passive: true });
+		atlas.addEventListener("pointerdown", onPointerDown);
+		atlas.addEventListener("pointermove", onPointerMove);
+		atlas.addEventListener("pointerup", endDrag);
+		atlas.addEventListener("pointercancel", endDrag);
+
+		return () => {
+			atlas.removeEventListener("wheel", pauseManual);
+			atlas.removeEventListener("touchstart", pauseManual);
+			atlas.removeEventListener("pointerdown", onPointerDown);
+			atlas.removeEventListener("pointermove", onPointerMove);
+			atlas.removeEventListener("pointerup", endDrag);
+			atlas.removeEventListener("pointercancel", endDrag);
+
+			if (resumeTimer !== null) {
+				window.clearTimeout(resumeTimer);
+			}
+		};
 	}, []);
 
 	return (
@@ -137,7 +221,7 @@ export default function CartographySection() {
 			</div>
 
 			<div className="cartography-rail" aria-label="Selected geospatial and remote sensing outputs">
-				<div className="cartography-atlas">
+				<div ref={atlasRef} className="cartography-atlas">
 					<div className="cartography-atlas__track">
 						{[...MAPS, ...MAPS].map((map, index) => (
 							<article className="cartography-card" key={`${map.title}-${index}`}>
