@@ -2204,21 +2204,23 @@
   }
 
   .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
   .project-card {
-    gap: 11px;
-    padding: 12px;
+    gap: 9px;
+    min-width: 0;
+    padding: 10px;
     border-radius: 12px;
   }
 
   .project-card__visual {
-    min-height: 128px;
+    min-height: 104px;
   }
 
   .project-card__map-svg {
-    min-height: 128px;
+    min-height: 104px;
   }
 
   .project-card__topline,
@@ -2230,21 +2232,34 @@
   }
 
   .project-card__title {
-    font-size: clamp(18px, 5.5vw, 24px);
+    font-size: clamp(16px, 4.9vw, 22px);
   }
 
   .project-card__description {
-    font-size: 11px;
-    line-height: 1.5;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 10.5px;
+    line-height: 1.42;
   }
 
   .project-card__tech {
-    gap: 5px;
+    gap: 4px;
   }
 
   .project-card__pill {
-    min-height: 22px;
-    padding: 4px 6px;
+    min-height: 20px;
+    padding: 3px 5px;
+  }
+
+  .project-card__pill:nth-child(n + 4) {
+    display: none;
+  }
+
+  .project-card__footer {
+    gap: 8px;
+    padding-top: 10px;
   }
 }
 

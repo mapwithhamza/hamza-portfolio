@@ -105,7 +105,6 @@ export default function CartographySection() {
 		let inView = false;
 		let paused = reduceMotion;
 		let dragging = false;
-		let hovering = false;
 		let dragStartX = 0;
 		let dragStartScroll = 0;
 		let cachedMaxScroll = Math.max(1, atlas.scrollWidth - atlas.clientWidth);
@@ -132,20 +131,20 @@ export default function CartographySection() {
 		};
 
 		const resumeAutoSoon = () => {
-			if (reduceMotion || hovering || dragging || !inView) {
+			if (reduceMotion || dragging || !inView) {
 				return;
 			}
 
 			pauseAuto();
 			resumeTimer = window.setTimeout(() => {
-				if (hovering || dragging || !inView) {
+				if (dragging || !inView) {
 					return;
 				}
 
 				paused = false;
 				lastTime = performance.now();
 				atlas.classList.add("cartography-atlas--auto");
-			}, 1200);
+			}, 450);
 		};
 
 		const tick = (time: number) => {
@@ -153,7 +152,7 @@ export default function CartographySection() {
 
 			if (inView && !paused && maxScroll > 2) {
 				const deltaSeconds = Math.min(0.05, (time - lastTime) / 1000 || 0);
-				atlas.scrollLeft += direction * 18 * deltaSeconds;
+				atlas.scrollLeft += direction * 24 * deltaSeconds;
 
 				if (atlas.scrollLeft >= maxScroll - 2) {
 					direction = -1;
@@ -175,16 +174,16 @@ export default function CartographySection() {
 				return;
 			}
 
-			const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-			const shiftWheel = event.shiftKey && Math.abs(event.deltaY) > 0;
+			const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
 
-			if (!horizontalIntent && !shiftWheel) {
+			if (delta === 0) {
 				return;
 			}
 
-			const delta = horizontalIntent ? event.deltaX : event.deltaY;
+			const atStart = atlas.scrollLeft <= 1;
+			const atEnd = atlas.scrollLeft >= maxScroll - 1;
 
-			if (delta === 0) {
+			if ((delta < 0 && atStart) || (delta > 0 && atEnd)) {
 				return;
 			}
 
@@ -239,16 +238,6 @@ export default function CartographySection() {
 			resumeAutoSoon();
 		};
 
-		const onMouseEnter = () => {
-			hovering = true;
-			pauseAuto();
-		};
-
-		const onMouseLeave = () => {
-			hovering = false;
-			resumeAutoSoon();
-		};
-
 		const visibilityObserver = new IntersectionObserver(
 			([entry]) => {
 				inView = entry.isIntersecting;
@@ -273,8 +262,6 @@ export default function CartographySection() {
 		atlas.addEventListener("pointermove", onPointerMove);
 		atlas.addEventListener("pointerup", endDrag);
 		atlas.addEventListener("pointercancel", endDrag);
-		atlas.addEventListener("mouseenter", onMouseEnter);
-		atlas.addEventListener("mouseleave", onMouseLeave);
 		frame = window.requestAnimationFrame(tick);
 
 		return () => {
@@ -286,8 +273,6 @@ export default function CartographySection() {
 			atlas.removeEventListener("pointermove", onPointerMove);
 			atlas.removeEventListener("pointerup", endDrag);
 			atlas.removeEventListener("pointercancel", endDrag);
-			atlas.removeEventListener("mouseenter", onMouseEnter);
-			atlas.removeEventListener("mouseleave", onMouseLeave);
 
 			if (frame !== null) {
 				window.cancelAnimationFrame(frame);
